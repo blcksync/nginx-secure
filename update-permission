@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# scan dir that has no group permission with $ETH_GID and 
+# update them with the correct permission.
+# setui and setgid on dir only
+
+set -e
+
+for dr in $@; do
+  find "$dr" ! \( -group $NGINX_GID -a -perm -g+rwX \) \
+    -exec chgrp $NGINX_GID {} \; \
+    -exec chmod g+rwX {} \;
+
+  find "$dr" \( -type d -a ! -perm -6000 \) \
+    -exec chmod +6000 {} \;
+done
