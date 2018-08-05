@@ -4,6 +4,11 @@ set -e
 
 curr_dir=$(cd $(dirname $0); pwd)
 
+if [ ! -f $curr_dir/common.sh ] ; then
+  echo "fatal - missing file common.sh, can't continue, exiting!"
+  exit -1
+fi
+
 [ -f $curr_dir/common.sh ] && source "$curr_dir/common.sh"
 
 build_dir="./build"
