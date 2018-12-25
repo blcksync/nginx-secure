@@ -19,9 +19,3 @@ This kicks off the container and you can run command `nginx` to start the web se
 ```
 ./run.sh
 ```
-
-For production, run the following script. The main difference is that this bind to
-all interfaces and expose it via port `80` instead of `9090`.
-```
-./prod-run.sh
-```
